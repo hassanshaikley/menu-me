@@ -2,11 +2,15 @@ import { TabNavigator } from 'react-navigation'
 
 import {
 	MenuScreen,
+	EditMenuScreen
 } from '../screens';
 
 export default TabNavigator({
-	Login: {
+	home: {
 		screen: MenuScreen,
+	},
+	edit: {
+		screen: EditMenuScreen,
 	},
 }, {
 	swipeEnabled: true,

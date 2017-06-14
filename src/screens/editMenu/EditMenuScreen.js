@@ -5,13 +5,15 @@ import {
 	Text,
 	View,
 	TouchableHighlight,
-	Button
+	Button,
+	TextInput,
 } from 'react-native';
 
 import { NavigationActions } from 'react-navigation';
-import { getMenuTitle } from '../../api';
 
-const MenuScreen = React.createClass({
+import { getMenuTitle, setMenuTitle } from '../../api';
+
+const EditMenuScreen = React.createClass({
 	getInitialState() {
 		return {
 			menuItems: [],
@@ -26,31 +28,37 @@ const MenuScreen = React.createClass({
 	// 	}
 	// },
 
+
 	componentWillMount() {
-
-	},
-
-	componentDidMount() {
 		return getMenuTitle().then(menuTitle => {
-			return this.setState({menuTitle});
+			console.log(`got menu title ${menuTitle}`)
+			return this.setState({menuTitle})
+			.then(() => {
+				return setMenuTitle(menuTitle)
+			})
 		})
 	},
 	addMenuItem(){
 
 	},
+	editTitle(text){
+		console.log(text)
+		this.setState({title: text})
+	},
 	render(){
-			console.log(this.state.menuTitle)
 		return (
 			<View>
 				<Text>
-				Menu Sccreen
-				</Text>
-				<Text>
-					{this.state.menuTitle}
+				Edit Menu Sccreen
 				</Text>
 
+				<TextInput
+					style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+					value={this.state.menuTitle}
+					onChangeText={this.editTitle}
+					/>
 				<Button
-				title='hi'
+				title='EDIT THING'
 				color='#841584'
 				onPress={this.addMenuItem}
 				/>
@@ -59,4 +67,4 @@ const MenuScreen = React.createClass({
 	},
 });
 
-export default MenuScreen;
+export default EditMenuScreen;
