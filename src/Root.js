@@ -45,13 +45,13 @@ const Root = React.createClass({
 		return this.state.menuItems;
 	},
 	setMenu(menuItems) {
-		console.log(`\n\nsetting menu to ${JSON.stringify(menuItems)}\n\n`)
+		console.log('1---set menu fren')
 		return setMenuItems(menuItems)
 		.then(() => {
-			this.setState({menuItems})
+			return this.setState({menuItems})
 		})
 		.catch((error) => {
-			console.log(`\t\tgot error ${error} when setting menu items fren`)
+			console.log(`x(3)x---got error ${error} when setting menu items fren`)
 		})
 	},
 

@@ -39,7 +39,7 @@ export const getMenuItems = () => {
 			return AsyncStorage.setItem(menuItemsVar, JSON.stringify(defaultMenu))
 			.then(() => { return defaultMenu })
 		}
-		console.log('\n\n\ngetting menu items from api!!!!!!!!!!!!!', menuItems)
+		console.log('\n\n\ngetting menu items from api!!!!!!!!!!!!!', JSON.parse(menuItems))
 		return JSON.parse(menuItems)
 	})
 	.catch((error) => {
@@ -48,7 +48,9 @@ export const getMenuItems = () => {
 }
 
 export const setMenuItems = (newMenu) => {
-	console.log('\n\n\nsetting menu items from api!!!!!!!!!!!!!', JSON.stringify(newMenu))
-	return AsyncStorage.setItem(menuItemsVar, JSON.stringify(newMenu));
+	return AsyncStorage.setItem(menuItemsVar, JSON.stringify(newMenu))
+	.catch(error => {
+		console.log(`Error in setMenuItems: ${error}`)
+	})
 
 }

@@ -22,7 +22,7 @@ const MenuItemModel = t.struct({
 		food: 'Food',
 		drink: 'Drinks',
 		snacks: 'Snacks',
-	})
+	}, 'category')
 });
 
 
@@ -42,15 +42,11 @@ const EditMenuScreen = React.createClass({
 
 	changeMenuItem(key, newValue) {
 		let menuItems = this.props.screenProps.getMenu();
-
 		menuItems[key] = newValue;
-
-		console.log('changeMenuItem->props.screenprops.setmenu')
-		this.props.screenProps.setMenu(menuItems)
+		return this.props.screenProps.setMenu(menuItems)
 	},
 	addMenuItem(){
 		let menuItems = this.props.screenProps.getMenu()
-		console.log('add menu item pressed 1:', menuItems)
 
 		menuItems.push({
 			name: 'Things name',
@@ -58,16 +54,15 @@ const EditMenuScreen = React.createClass({
 			alreadyPrepared: false,
 			category: 'food'
 		})
-		console.log('setting menu items to ', menuItems)
-		this.props.screenProps.setMenu(menuItems)
+
+		return this.props.screenProps.setMenu(menuItems)
 	},
 	editTitle(text){
-		this.props.screenProps.setTitle(text);
+		return this.props.screenProps.setTitle(text);
 	},
 	render(){
 		const menuItems = this.props.screenProps.getMenu();
 
-		console.log(menuItems, ':: is menuitems')
 		return (
 			<View>
 				<Text style={{textAlign: 'center', marginTop: 30, fontSize: 20, marginBottom: 30}}>
@@ -83,24 +78,20 @@ const EditMenuScreen = React.createClass({
 				<View>
 					{
 						menuItems.map((menuItem, key) => {
-							let value = {}
+							console.log(`creating menu item ${key}, using data: ${JSON.stringify(menuItem)}`)
 							const onChange = (newValue) => {
-								console.log(`new value is ${JSON.stringify(newValue)}`)
-								value = newValue;
 								this.changeMenuItem(key, newValue);
 							}
 							return (
 								<View key={key} style={{marginLeft: 20, marginRight: 20, borderWidth: 1, borderColor: 'gray', padding: 5}}>
-									<Form type={MenuItemModel} onChange={onChange} value={menuItems[key]}/>
+									<Form type={MenuItemModel} onChange={onChange} value={menuItem} />
 									<Button
 										title='Remove Item'
 										color='black'
 										onPress={
 											() => {
-												console.log('removing menu item bish')
-												let menuItems = this.props.screenProps.getMenu();
 												menuItems.splice(key, 1);
-												this.props.screenProps.setMenu(menuItems)
+												return this.props.screenProps.setMenu(menuItems)
 											}
 										}
 										/>

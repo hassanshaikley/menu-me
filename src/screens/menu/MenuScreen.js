@@ -28,8 +28,16 @@ const MenuScreen = React.createClass({
 	// },
 	render(){
 
-		const menuItems = this.props.screenProps.getMenu();
-		console.log(`\t\tin MenuScreen menuItems is ${menuItems}`)
+		const menuItems = this.props.screenProps.getMenu(); // This is an async function... (a promise)
+
+		console.log('SOME MENU ITEMS BELOW')
+		console.log(menuItems)
+		// for (let i = 0; i < menuItems.length; i++){
+		// 	if (menuItems[i].category === 'drink'){
+		// 		menuItems.push(menuItems.splice(i, 1))
+		// 	}
+		// }
+
 		return (
 			<View>
 				<Text style={{textAlign: 'center', marginTop: 30, fontSize: 20, marginBottom: 30}}>
@@ -41,23 +49,24 @@ const MenuScreen = React.createClass({
 						Swipe Right to add an item to your menu! : )
 					</Text>
 				}
+
 				{
 					menuItems.map((menuItem, key) => {
+						console.log(menuItems.length, ': length, key: ', key);
+						
 						return (
 							<View key={key}>
-								<Text>
+								<Text style={{textAlign: 'center', fontSize: 16}}>
 									{menuItem.name}
 								</Text>
-								<Text>
+								<Text style={{textAlign: 'center', fontSize: 12}}>
 									{menuItem.description}
-								</Text>
-								<Text>
-									{menuItem.category}
 								</Text>
 							</View>
 						)
 					})
 				}
+				{ console.log('hello lol')}
 			</View>
 		);
 	},
