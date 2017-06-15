@@ -61,6 +61,9 @@ const MenuScreen = React.createClass({
 						Swipe Right to add an item to your menu! : )
 					</Text>
 				}
+				<Text style={{textAlign: 'center', fontSize: 18}}>
+					Food
+				</Text>
 
 				{
 					food.map((menuItem, key) => {
@@ -80,6 +83,9 @@ const MenuScreen = React.createClass({
 						)
 					})
 				}
+				<Text style={{textAlign: 'center', fontSize: 18}}>
+					Drinks
+				</Text>
 				{
 					drinks.map((menuItem, key) => {
 						console.log(menuItems.length, ': length, key: ', key);

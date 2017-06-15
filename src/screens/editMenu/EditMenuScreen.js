@@ -69,7 +69,7 @@ const EditMenuScreen = React.createClass({
 			name: 'Things name',
 			description: 'things description',
 			alreadyPrepared: false,
-			category: 'drink',
+			category: 'food',
 		})
 
 		return this.props.screenProps.setMenu(menuItems)
