@@ -3,13 +3,15 @@ import {
 } from 'react-native';
 
 const menuTitleVar = 'hk_menu_title';
+const menuItemsVar = 'hk_menu_items';
+
 
 const defaultTitle = 'Good Heckin Menu';
+const defaultMenu = [];
 
-const defaultMenuItems = [{
-	title: 'Welcome',
-	description: 'Swipe right to edit items in your menu'
-}]
+
+AsyncStorage.removeItem(menuItemsVar)
+
 
 export const getMenuTitle = () => {
 	return AsyncStorage.getItem(menuTitleVar)
@@ -29,10 +31,24 @@ export const setMenuTitle = (newTitle) => {
 	return AsyncStorage.setItem(menuTitleVar, newTitle);
 }
 
-export const getMenuObject = () => {
-
+export const getMenuItems = () => {
+	return AsyncStorage.getItem(menuItemsVar)
+	.then((menuItems) => {
+		if (!menuItems) {
+			console.log('theres no menu items so setting it to', JSON.stringify(defaultMenu))
+			return AsyncStorage.setItem(menuItemsVar, JSON.stringify(defaultMenu))
+			.then(() => { return defaultMenu })
+		}
+		console.log('\n\n\ngetting menu items from api!!!!!!!!!!!!!', menuItems)
+		return JSON.parse(menuItems)
+	})
+	.catch((error) => {
+		console.log('got error ' + error)
+	});
 }
 
-export const setMenuObject = (newObject) => {
+export const setMenuItems = (newMenu) => {
+	console.log('\n\n\nsetting menu items from api!!!!!!!!!!!!!', JSON.stringify(newMenu))
+	return AsyncStorage.setItem(menuItemsVar, JSON.stringify(newMenu));
 
 }

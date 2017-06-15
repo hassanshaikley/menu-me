@@ -27,18 +27,37 @@ const MenuScreen = React.createClass({
 	//
 	// },
 	render(){
-		console.log('rendering, fren',this.props.screenProps.getTitle())
+
+		const menuItems = this.props.screenProps.getMenu();
+		console.log(`\t\tin MenuScreen menuItems is ${menuItems}`)
 		return (
 			<View>
-				<Text style={{textAlign: 'center', marginTop: 20, fontSize: 20}}>
+				<Text style={{textAlign: 'center', marginTop: 30, fontSize: 20, marginBottom: 30}}>
 					{this.props.screenProps.getTitle()}
 				</Text>
-
-				<Button
-				title='hi'
-				color='#841584'
-				onPress={this.addMenuItem}
-				/>
+				{
+					menuItems.length === 0 &&
+					<Text style={{textAlign: 'center'}}>
+						Swipe Right to add an item to your menu! : )
+					</Text>
+				}
+				{
+					menuItems.map((menuItem, key) => {
+						return (
+							<View key={key}>
+								<Text>
+									{menuItem.name}
+								</Text>
+								<Text>
+									{menuItem.description}
+								</Text>
+								<Text>
+									{menuItem.category}
+								</Text>
+							</View>
+						)
+					})
+				}
 			</View>
 		);
 	},

@@ -6,7 +6,7 @@ import {
 } from 'react-native'
 
 
-import { getMenuTitle, setMenuTitle } from './api';
+import { getMenuTitle, setMenuTitle, getMenuItems, setMenuItems } from './api';
 
 const Root = React.createClass({
 	getInitialState() {
@@ -20,28 +20,43 @@ const Root = React.createClass({
 		.then(menuTitle => {
 			return this.setState({ menuTitle });
 		})
+		.then(() => {
+			return getMenuItems()
+		})
+		.then(menuItems => {
+			return this.setState({ menuItems });
+		})
 	},
 
 	getTitle(){
-		console.log('get title returing ', this.state.menuTitle)
+		// console.log('get title returing ', this.state.menuTitle)
 		return this.state.menuTitle;
 	},
 	setTitle(menuTitle) {
-		console.log('setting menu title to ', menuTitle)
+		// console.log('setting menu title to ', menuTitle)
 		return setMenuTitle(menuTitle)
 		.then(() => {
 			this.setState({menuTitle: menuTitle})
 		})
 	},
 	getMenu() {
-		return this.state.menu;
+		console.log('get menu returing ', this.state.menuItems)
+
+		return this.state.menuItems;
 	},
 	setMenu(menuItems) {
-		this.setState({menuItems})
+		console.log(`\n\nsetting menu to ${JSON.stringify(menuItems)}\n\n`)
+		return setMenuItems(menuItems)
+		.then(() => {
+			this.setState({menuItems})
+		})
+		.catch((error) => {
+			console.log(`\t\tgot error ${error} when setting menu items fren`)
+		})
 	},
 
 	render(){
-	  return <Navigator setMenu={this.setMenu} getMenu={this.getMenu} setTitle={this.setTitle} getTitle={this.getTitle} screenProps={{getTitle: this.getTitle, setTitle: this.setTitle}}/>
+	  return <Navigator screenProps={{getTitle: this.getTitle, setTitle: this.setTitle, getMenu: this.getMenu, setMenu: this.setMenu}}/>
 	}
 })
 
