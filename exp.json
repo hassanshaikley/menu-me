@@ -1,21 +1,26 @@
 {
-  "name": "menu-meeee",
-  "description": "An empty new project",
-  "slug": "menu-meeee",
-  "privacy": "public",
-  "sdkVersion": "17.0.0",
-  "version": "1.0.0",
-  "orientation": "portrait",
-  "primaryColor": "#cccccc",
-  "icon": "./assets/icons/app.png",
-  "loading": {
-    "icon": "./assets/icons/loading.png",
-    "hideExponentText": false
-  },
-  "packagerOpts": {
-    "assetExts": ["ttf", "mp4"]
-  },
-  "ios": {
-    "supportsTablet": true
-  }
+	"name": "Menu Me",
+	"description": "Save your home menu here, so you can see what you have to eat when you get hungry!",
+	"slug": "menu-me",
+	"privacy": "public",
+	"sdkVersion": "17.0.0",
+	"version": "0.0.1",
+	"orientation": "portrait",
+	"primaryColor": "#cccccc",
+	"icon": "./assets/icons/app.png",
+	"loading": {
+		"icon": "./assets/icons/loading.png",
+		"hideExponentText": true
+	},
+	"packagerOpts": {
+		"assetExts": ["ttf", "mp4"]
+	},
+	"ios": {
+		"supportsTablet": true,
+		"bundleIdentifier": "com.hassanshaikley.menume",
+	},
+	"android": {
+		"package": "com.hassanshaikley.menume",
+		"versionCode": 0
+	},
 }

@@ -4,6 +4,7 @@ import {
 	AsyncStorage,
 	Text,
 	View,
+	ScrollView,
 	TouchableHighlight,
 	Button,
 	TextInput,
@@ -64,7 +65,7 @@ const EditMenuScreen = React.createClass({
 		const menuItems = this.props.screenProps.getMenu();
 
 		return (
-			<View>
+			<ScrollView>
 				<Text style={{textAlign: 'center', marginTop: 30, fontSize: 20, marginBottom: 30}}>
 					Edit Menu
 				</Text>
@@ -106,7 +107,7 @@ const EditMenuScreen = React.createClass({
 					color='#841584'
 					onPress={this.addMenuItem}
 					/>
-			</View>
+			</ScrollView>
 		);
 	},
 });

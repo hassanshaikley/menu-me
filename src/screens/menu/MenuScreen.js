@@ -5,7 +5,8 @@ import {
 	Text,
 	View,
 	TouchableHighlight,
-	Button
+	Button,
+	ScrollView
 } from 'react-native';
 
 import { NavigationActions } from 'react-navigation';
@@ -50,7 +51,7 @@ const MenuScreen = React.createClass({
 
 
 		return (
-			<View>
+			<ScrollView>
 				<Text style={{textAlign: 'center', marginTop: 30, fontSize: 20, marginBottom: 30}}>
 					{this.props.screenProps.getTitle()}
 				</Text>
@@ -96,7 +97,7 @@ const MenuScreen = React.createClass({
 						)
 					})
 				}
-			</View>
+			</ScrollView>
 		);
 	},
 });
