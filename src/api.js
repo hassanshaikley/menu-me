@@ -10,8 +10,7 @@ const defaultTitle = 'Good Heckin Menu';
 const defaultMenu = [];
 
 
-AsyncStorage.removeItem(menuItemsVar)
-
+// AsyncStorage.removeItem(menuItemsVar)
 
 export const getMenuTitle = () => {
 	return AsyncStorage.getItem(menuTitleVar)

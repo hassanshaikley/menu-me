@@ -20,8 +20,8 @@ const MenuItemModel = t.struct({
 	alreadyPrepared: t.Boolean,
 	category: t.enums({
 		food: 'Food',
-		drink: 'Drinks',
-		snacks: 'Snacks',
+		drink: 'Drink',
+		// snacks: 'Snack',
 	}, 'category')
 });
 
@@ -52,7 +52,7 @@ const EditMenuScreen = React.createClass({
 			name: 'Things name',
 			description: 'things description',
 			alreadyPrepared: false,
-			category: 'food'
+			category: 'drink',
 		})
 
 		return this.props.screenProps.setMenu(menuItems)
@@ -84,7 +84,7 @@ const EditMenuScreen = React.createClass({
 							}
 							return (
 								<View key={key} style={{marginLeft: 20, marginRight: 20, borderWidth: 1, borderColor: 'gray', padding: 5}}>
-									<Form type={MenuItemModel} onChange={onChange} value={menuItem} />
+									<Form style={{fontSize: 10}} type={MenuItemModel} onChange={onChange} value={menuItem} />
 									<Button
 										title='Remove Item'
 										color='black'

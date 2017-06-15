@@ -15,7 +15,7 @@ export default TabNavigator({
 }, {
 	swipeEnabled: true,
 	animationEnabled: false, // eh for performance but try
-	tabBarPosition: 'bottom',
+	tabBarPosition: 'top',
 	showIcon: true,
 	// pressColor: '#F00', also was removed
 	// indicatorStyle: { this was removed - did the undelrine

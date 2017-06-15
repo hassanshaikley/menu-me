@@ -32,11 +32,22 @@ const MenuScreen = React.createClass({
 
 		console.log('SOME MENU ITEMS BELOW')
 		console.log(menuItems)
-		// for (let i = 0; i < menuItems.length; i++){
-		// 	if (menuItems[i].category === 'drink'){
-		// 		menuItems.push(menuItems.splice(i, 1))
-		// 	}
-		// }
+
+		const food = []
+		const drinks = [];
+		const snacks = [];
+
+
+		for (let i = 0; i < menuItems.length; i++){
+			if (menuItems[i].category === 'drink'){
+				drinks.push(menuItems[i]);
+			} else if (menuItems[i].category === 'food'){
+				food.push(menuItems[i]);
+			}
+		}
+
+
+
 
 		return (
 			<View>
@@ -51,11 +62,13 @@ const MenuScreen = React.createClass({
 				}
 
 				{
-					menuItems.map((menuItem, key) => {
+					food.map((menuItem, key) => {
 						console.log(menuItems.length, ': length, key: ', key);
-						
+
+						const borderColor = menuItem.alreadyPrepared ? 'green' : 'gray';
+
 						return (
-							<View key={key}>
+							<View key={key} style={{borderColor: borderColor, borderWidth: 1}}>
 								<Text style={{textAlign: 'center', fontSize: 16}}>
 									{menuItem.name}
 								</Text>
@@ -66,7 +79,23 @@ const MenuScreen = React.createClass({
 						)
 					})
 				}
-				{ console.log('hello lol')}
+				{
+					drinks.map((menuItem, key) => {
+						console.log(menuItems.length, ': length, key: ', key);
+						const borderColor = menuItem.alreadyPrepared ? 'green' : 'gray';
+
+						return (
+							<View key={key} style={{marginLeft: 40, marginRight: 40, padding: 20, borderColor: borderColor, borderWidth: 1}}>
+								<Text style={{textAlign: 'center', fontSize: 16}}>
+									{menuItem.name}
+								</Text>
+								<Text style={{textAlign: 'center', fontSize: 12}}>
+									{menuItem.description}
+								</Text>
+							</View>
+						)
+					})
+				}
 			</View>
 		);
 	},
