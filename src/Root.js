@@ -34,10 +34,9 @@ const Root = React.createClass({
 	},
 	setTitle(menuTitle) {
 		// console.log('setting menu title to ', menuTitle)
-		return setMenuTitle(menuTitle)
-		.then(() => {
-			this.setState({menuTitle: menuTitle})
-		})
+		this.setState({menuTitle: menuTitle})
+
+		setMenuTitle(menuTitle)
 	},
 	getMenu() {
 		console.log('get menu returing ', this.state.menuItems)
@@ -46,13 +45,9 @@ const Root = React.createClass({
 	},
 	setMenu(menuItems) {
 		console.log('1---set menu fren')
-		return setMenuItems(menuItems)
-		.then(() => {
-			return this.setState({menuItems})
-		})
-		.catch((error) => {
-			console.log(`x(3)x---got error ${error} when setting menu items fren`)
-		})
+		this.setState({menuItems})
+
+		setMenuItems(menuItems)
 	},
 
 	render(){
