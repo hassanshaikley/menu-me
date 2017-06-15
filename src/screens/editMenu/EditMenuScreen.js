@@ -65,7 +65,7 @@ const EditMenuScreen = React.createClass({
 	addMenuItem(){
 		let menuItems = this.props.screenProps.getMenu()
 
-		menuItems.push({
+		menuItems.unshift({
 			name: 'Things name',
 			description: 'things description',
 			alreadyPrepared: false,
@@ -94,6 +94,11 @@ const EditMenuScreen = React.createClass({
 					onChangeText={this.editTitle}
 					/>
 
+					<Button
+						title='Add a menu item'
+						color='#841584'
+						onPress={this.addMenuItem}
+						/>
 				<View>
 					{
 						menuItems.map((menuItem, key) => {
@@ -119,12 +124,6 @@ const EditMenuScreen = React.createClass({
 						})
 					}
 				</View>
-
-				<Button
-					title='Add a menu item'
-					color='#841584'
-					onPress={this.addMenuItem}
-					/>
 			</ScrollView>
 		);
 	},
