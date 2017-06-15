@@ -52,7 +52,7 @@ const MenuScreen = React.createClass({
 
 		return (
 			<ScrollView>
-				<Text style={{textAlign: 'center', marginTop: 30, fontSize: 20, marginBottom: 30}}>
+				<Text style={{textAlign: 'center', fontSize: 20, marginBottom: 30}}>
 					{this.props.screenProps.getTitle()}
 				</Text>
 				{
@@ -69,7 +69,7 @@ const MenuScreen = React.createClass({
 						const borderColor = menuItem.alreadyPrepared ? 'green' : 'gray';
 
 						return (
-							<View key={key} style={{marginLeft: 40, marginRight: 40, padding: 20, borderColor: borderColor, borderWidth: 1}}>
+							<View key={key} style={{marginLeft: 40, marginRight: 40, marginBottom: 10, padding: 20, borderColor: borderColor, borderWidth: 1}}>
 								<Text style={{textAlign: 'center', fontSize: 16}}>
 									{menuItem.name}
 								</Text>
@@ -86,7 +86,7 @@ const MenuScreen = React.createClass({
 						const borderColor = menuItem.alreadyPrepared ? 'green' : 'gray';
 
 						return (
-							<View key={key} style={{marginLeft: 40, marginRight: 40, padding: 20, borderColor: borderColor, borderWidth: 1}}>
+							<View key={key} style={{marginLeft: 40, marginRight: 40, padding: 20, marginBottom: 10, borderColor: borderColor, borderWidth: 1}}>
 								<Text style={{textAlign: 'center', fontSize: 16}}>
 									{menuItem.name}
 								</Text>

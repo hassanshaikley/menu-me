@@ -4,7 +4,7 @@
 	"slug": "menu-me",
 	"privacy": "public",
 	"sdkVersion": "17.0.0",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"orientation": "portrait",
 	"primaryColor": "#cccccc",
 	"icon": "./assets/icons/app.png",
@@ -21,6 +21,6 @@
 	},
 	"android": {
 		"package": "com.hassanshaikley.menume",
-		"versionCode": 0
+		"versionCode": 2
 	},
 }

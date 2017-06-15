@@ -30,11 +30,14 @@ var MenuItemModelOptions = {
   fields: {
     name: {
       autoCorrect: false,
-			autoCapitalize: false
+			autoCapitalize: 'none'
     },
 		description: {
 			autoCorrect: false,
-			autoCapitalize: false
+			autoCapitalize: 'none'
+		},
+		category: {
+			nullOption: false
 		}
   }
 };
@@ -79,7 +82,7 @@ const EditMenuScreen = React.createClass({
 
 		return (
 			<ScrollView>
-				<Text style={{textAlign: 'center', marginTop: 30, fontSize: 20, marginBottom: 30}}>
+				<Text style={{textAlign: 'center', fontSize: 20, marginBottom: 30}}>
 					Edit Menu
 				</Text>
 
@@ -100,7 +103,7 @@ const EditMenuScreen = React.createClass({
 							}
 							return (
 								<View key={key} style={{marginLeft: 20, marginRight: 20, marginBottom: 10, borderWidth: 1, borderColor: 'gray', padding: 5}}>
-									<Form style={{fontSize: 10}} type={MenuItemModel} onChange={onChange} value={menuItem} />
+									<Form style={{fontSize: 10}} type={MenuItemModel} onChange={onChange} value={menuItem} options={MenuItemModelOptions}/>
 									<Button
 										title='Remove Item'
 										color='black'
