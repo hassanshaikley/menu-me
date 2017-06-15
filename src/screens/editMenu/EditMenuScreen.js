@@ -26,6 +26,19 @@ const MenuItemModel = t.struct({
 	}, 'category')
 });
 
+var MenuItemModelOptions = {
+  fields: {
+    name: {
+      autoCorrect: false,
+			autoCapitalize: false
+    },
+		description: {
+			autoCorrect: false,
+			autoCapitalize: false
+		}
+  }
+};
+
 
 const EditMenuScreen = React.createClass({
 	// async storeKey(item, selectedValue) {
@@ -84,7 +97,7 @@ const EditMenuScreen = React.createClass({
 								this.changeMenuItem(key, newValue);
 							}
 							return (
-								<View key={key} style={{marginLeft: 20, marginRight: 20, borderWidth: 1, borderColor: 'gray', padding: 5}}>
+								<View key={key} style={{marginLeft: 20, marginRight: 20, marginBottom: 10, borderWidth: 1, borderColor: 'gray', padding: 5}}>
 									<Form style={{fontSize: 10}} type={MenuItemModel} onChange={onChange} value={menuItem} />
 									<Button
 										title='Remove Item'

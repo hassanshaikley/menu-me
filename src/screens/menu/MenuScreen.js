@@ -69,7 +69,7 @@ const MenuScreen = React.createClass({
 						const borderColor = menuItem.alreadyPrepared ? 'green' : 'gray';
 
 						return (
-							<View key={key} style={{borderColor: borderColor, borderWidth: 1}}>
+							<View key={key} style={{marginLeft: 40, marginRight: 40, padding: 20, borderColor: borderColor, borderWidth: 1}}>
 								<Text style={{textAlign: 'center', fontSize: 16}}>
 									{menuItem.name}
 								</Text>
