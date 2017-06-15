@@ -11,8 +11,6 @@ import {
 
 import { NavigationActions } from 'react-navigation';
 
-import { getMenuTitle, setMenuTitle } from '../../api';
-
 const EditMenuScreen = React.createClass({
 	getInitialState() {
 		return {
@@ -30,20 +28,13 @@ const EditMenuScreen = React.createClass({
 
 
 	componentWillMount() {
-		return getMenuTitle().then(menuTitle => {
-			console.log(`got menu title ${menuTitle}`)
-			return this.setState({menuTitle})
-			.then(() => {
-				return setMenuTitle(menuTitle)
-			})
-		})
+
 	},
 	addMenuItem(){
 
 	},
 	editTitle(text){
-		console.log(text)
-		this.setState({title: text})
+		this.props.screenProps.setTitle(text);
 	},
 	render(){
 		return (
@@ -54,7 +45,7 @@ const EditMenuScreen = React.createClass({
 
 				<TextInput
 					style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-					value={this.state.menuTitle}
+					value={this.props.screenProps.getTitle()}
 					onChangeText={this.editTitle}
 					/>
 				<Button

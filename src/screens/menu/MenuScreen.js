@@ -9,15 +9,8 @@ import {
 } from 'react-native';
 
 import { NavigationActions } from 'react-navigation';
-import { getMenuTitle } from '../../api';
 
 const MenuScreen = React.createClass({
-	getInitialState() {
-		return {
-			menuItems: [],
-			menuTitle: undefined
-		};
-	},
 	// async storeKey(item, selectedValue) {
 	// 	try {
 	// 		await AsyncStorage.setItem(item, selectedValue);
@@ -26,27 +19,19 @@ const MenuScreen = React.createClass({
 	// 	}
 	// },
 
-	componentWillMount() {
+	// componentWillMount() {
+	//
+	// },
 
-	},
-
-	componentDidMount() {
-		return getMenuTitle().then(menuTitle => {
-			return this.setState({menuTitle});
-		})
-	},
-	addMenuItem(){
-
-	},
+	// addMenuItem(){
+	//
+	// },
 	render(){
-			console.log(this.state.menuTitle)
+		console.log('rendering, fren',this.props.screenProps.getTitle())
 		return (
 			<View>
-				<Text>
-				Menu Sccreen
-				</Text>
-				<Text>
-					{this.state.menuTitle}
+				<Text style={{textAlign: 'center', marginTop: 20, fontSize: 20}}>
+					{this.props.screenProps.getTitle()}
 				</Text>
 
 				<Button
