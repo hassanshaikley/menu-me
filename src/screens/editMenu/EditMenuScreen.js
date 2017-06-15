@@ -87,7 +87,7 @@ const EditMenuScreen = React.createClass({
 				</Text>
 
 				<TextInput
-					style={{height: 40, borderColor: 'gray', borderWidth: 1, fontSize: 20, marginLeft: 20, marginRight: 20, padding: 5, marginBottom: 30}}
+					style={{height: 40, borderColor: 'gray', borderWidth: 1, fontSize: 20, marginLeft: 20, marginRight: 20, padding: 5, marginBottom: 10}}
 					value={this.props.screenProps.getTitle()}
 					autoCapitalize='none'
 					autoCorrect={false}
