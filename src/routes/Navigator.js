@@ -18,13 +18,17 @@ export default TabNavigator({
 	tabBarPosition: 'top',
 	showIcon: true,
 	// pressColor: '#F00', also was removed
-	// indicatorStyle: { this was removed - did the undelrine
-	// 	backgroundColor: '#F00'
-	// },
+	indicatorStyle: {
+		backgroundColor: '#F00'
+	},
 	tabBarOptions: {
 		showLabel: false,
 		style: {
-			backgroundColor: '#fff',
+			backgroundColor: 'white',
+			activeTintColor: 'white',
+			color: 'white',
+			paddingTop: 0,
+			height: 44,
 		},
 	},
 });
