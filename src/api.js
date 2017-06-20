@@ -4,12 +4,12 @@ import {
 
 const menuTitleVar = 'hk_menu_title';
 const menuItemsVar = 'hk_menu_items';
-const categoriesVar = 'hk_menu_items';
+// const categoriesVar = 'hk_menu_items';
 
 
 const defaultTitle = 'Good Heckin Menu';
 const defaultMenu = [];
-const defaultCategories = [];
+// const defaultCategories = [];
 
 
 // AsyncStorage.removeItem(menuItemsVar)
@@ -56,22 +56,22 @@ export const setMenuItems = (newMenu) => {
 
 }
 
-export const getCategories = () => {
-	return AsyncStorage.getItem(categoriesVar)
-	.then((categories) => {
-		if (!categories) {
-			console.log('theres no categories items so setting it to', JSON.stringify(defaultCategories))
-			return AsyncStorage.setItem(categoriesVar, JSON.stringify(defaultCategories))
-			.then(() => { return defaultCategories })
-		}
-		console.log('\n\n\ngetting categories items from api!!!!!!!!!!!!!', JSON.parse(categories))
-		return JSON.parse(categories)
-	})
-	.catch((error) => {
-		console.log('got error ' + error)
-	});
-}
-
-export const setCategories = (newCategories) => {
-	return AsyncStorage.setItem(categoriesVar, newCategories);
-}
+// export const getCategories = () => {
+// 	return AsyncStorage.getItem(categoriesVar)
+// 	.then((categories) => {
+// 		if (!categories) {
+// 			console.log('theres no categories items so setting it to', JSON.stringify(defaultCategories))
+// 			return AsyncStorage.setItem(categoriesVar, JSON.stringify(defaultCategories))
+// 			.then(() => { return defaultCategories })
+// 		}
+// 		console.log('\n\n\ngetting categories items from api!!!!!!!!!!!!!', JSON.parse(categories))
+// 		return JSON.parse(categories)
+// 	})
+// 	.catch((error) => {
+// 		console.log('got error ' + error)
+// 	});
+// }
+//
+// export const setCategories = (newCategories) => {
+// 	return AsyncStorage.setItem(categoriesVar, newCategories);
+// }

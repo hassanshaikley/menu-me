@@ -19,11 +19,7 @@ const MenuItemModel = t.struct({
 	name: t.String,
 	description: t.maybe(t.String),
 	alreadyPrepared: t.Boolean,
-	category: t.enums({
-		food: 'Food',
-		drink: 'Drink',
-		// snacks: 'Snack',
-	}, 'category')
+	category: t.String,
 });
 
 var MenuItemModelOptions = {
@@ -37,7 +33,8 @@ var MenuItemModelOptions = {
 			autoCapitalize: 'none'
 		},
 		category: {
-			nullOption: false
+			autoCorrect: false,
+			autoCapitalize: 'none'
 		}
   }
 };
@@ -69,7 +66,7 @@ const EditMenuScreen = React.createClass({
 			name: 'Things name',
 			description: 'things description',
 			alreadyPrepared: false,
-			category: 'food',
+			category: 'Food',
 		})
 
 		return this.props.screenProps.setMenu(menuItems)

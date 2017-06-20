@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 
 import {
 	AsyncStorage,
-	Text,
 	View,
 	TouchableHighlight,
 	Button,
 	ScrollView
 } from 'react-native';
 
+
 import { NavigationActions } from 'react-navigation';
+
+import { Container, Card, CardItem, Content, Text, Body } from 'native-base';
+
 
 const MenuScreen = React.createClass({
 	// async storeKey(item, selectedValue) {
@@ -28,82 +31,82 @@ const MenuScreen = React.createClass({
 	//
 	// },
 	render(){
-
 		const menuItems = this.props.screenProps.getMenu(); // This is an async function... (a promise)
 
-		console.log('SOME MENU ITEMS BELOW')
-		console.log(menuItems)
-
-		const food = []
-		const drinks = [];
-		const snacks = [];
+		const categories = {};
 
 
 		for (let i = 0; i < menuItems.length; i++){
-			if (menuItems[i].category === 'drink'){
-				drinks.push(menuItems[i]);
-			} else if (menuItems[i].category === 'food'){
-				food.push(menuItems[i]);
+			category = menuItems[i].category;
+			console.log(`menu item ${menuItems[i]}:`)
+			if (!categories[menuItems[i].category]){
+				console.log(`no category exists in ${categories} so I am creating it, fren` )
+				categories[menuItems[i].category] = [menuItems[i]];
+			} else {
+				categories[menuItems[i].category].push(menuItems[i]);
 			}
 		}
 
-
-
+		console.log(categories)
 
 		return (
-			<ScrollView>
-				<Text style={{textAlign: 'center', fontSize: 20, marginBottom: 30}}>
-					{this.props.screenProps.getTitle()}
-				</Text>
-				{
-					menuItems.length === 0 &&
-					<Text style={{textAlign: 'center'}}>
-						Swipe Right to add an item to your menu! : )
-					</Text>
-				}
-				<Text style={{textAlign: 'center', fontSize: 18}}>
-					Food
-				</Text>
+			<Container>
+				<Content>
+					<ScrollView>
+						<Text style={{textAlign: 'center', fontSize: 20, marginBottom: 30}}>
+							{this.props.screenProps.getTitle()}
+						</Text>
+						{
+							menuItems.length === 0 &&
+							<Text style={{textAlign: 'center'}}>
+								Swipe Right to add an item to your menu! : )
+							</Text>
+						}
 
-				{
-					food.map((menuItem, key) => {
-						console.log(menuItems.length, ': length, key: ', key);
+						{
+							Object.keys(categories).map((category) => {
+								// console.log('iterating through ', categories[category], category)
+								return (
+									<Card>
+										<CardItem header>
+											<Text>
+											{category}
+										</Text>
 
-						const borderColor = menuItem.alreadyPrepared ? 'green' : 'gray';
+										</CardItem>
+										<CardItem>
+											<Body>
+												{
+													categories[category].map((menuItem) => {
+														return (
+															<Card>
+																<CardItem>
+																	<Body>
+																		<Text>
+																			{menuItem.name}
+																		</Text>
+																		<Text>
+																			{menuItem.description}
+																		</Text>
+																	</Body>
+																</CardItem>
+															</Card>
+														)
+													})
+												}
 
-						return (
-							<View key={key} style={{marginLeft: 40, marginRight: 40, marginBottom: 10, padding: 20, borderColor: borderColor, borderWidth: 1}}>
-								<Text style={{textAlign: 'center', fontSize: 16}}>
-									{menuItem.name}
-								</Text>
-								<Text style={{textAlign: 'center', fontSize: 12}}>
-									{menuItem.description}
-								</Text>
-							</View>
-						)
-					})
-				}
-				<Text style={{textAlign: 'center', fontSize: 18}}>
-					Drinks
-				</Text>
-				{
-					drinks.map((menuItem, key) => {
-						console.log(menuItems.length, ': length, key: ', key);
-						const borderColor = menuItem.alreadyPrepared ? 'green' : 'gray';
+											</Body>
+										</CardItem>
+									</Card>
+								)
+							})
+						}
 
-						return (
-							<View key={key} style={{marginLeft: 40, marginRight: 40, padding: 20, marginBottom: 10, borderColor: borderColor, borderWidth: 1}}>
-								<Text style={{textAlign: 'center', fontSize: 16}}>
-									{menuItem.name}
-								</Text>
-								<Text style={{textAlign: 'center', fontSize: 12}}>
-									{menuItem.description}
-								</Text>
-							</View>
-						)
-					})
-				}
-			</ScrollView>
+
+
+					</ScrollView>
+				</Content>
+			</Container>
 		);
 	},
 });

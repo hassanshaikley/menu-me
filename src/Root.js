@@ -11,8 +11,8 @@ import {
 	setMenuTitle,
 	getMenuItems,
 	setMenuItems,
-	getCategories,
-	setCategories,
+	// getCategories,
+	// setCategories,
 } from './api';
 
 const Root = React.createClass({
@@ -20,13 +20,13 @@ const Root = React.createClass({
 		return {
 			menuItems: [],
 			menuTitle: undefined,
-			categories: [],
+			// categories: [],
 		};
 	},
 	componentDidMount() {
 		let menuTitle;
 		let menuItems;
-		let categories;
+		// let categories;
 
 		return getMenuTitle()
 		.then(_menuTitle => {
@@ -35,11 +35,8 @@ const Root = React.createClass({
 		})
 		.then((_menuItems) => {
  			menuItems = _menuItems;
-			return getCategories()
-
-		})
-		.then(_categories => {
-			return this.setState({ menuItems, menuTitle, categories });
+			// return getCategories()
+			return this.setState({ menuItems, menuTitle }); //categories
 		})
 	},
 
