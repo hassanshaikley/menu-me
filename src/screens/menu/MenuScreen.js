@@ -74,7 +74,7 @@ const MenuScreen = React.createClass({
 										{
 											categories[category].map((menuItem, key) => {
 												return (
-													<Card key={key} style={{marginTop: 10, width: 300}}>
+													<Card key={key} style={{marginTop: 10, width: 300, flex: 0}}>
 														<CardItem header>
 															<Text style={{textAlign: 'center', }}>
 																{menuItem.name}

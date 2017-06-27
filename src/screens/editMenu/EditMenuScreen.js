@@ -120,7 +120,7 @@ const EditMenuScreen = React.createClass({
 									this.changeMenuItem(key, newValue);
 								}
 								return (
-									<Card key={key}>
+									<Card key={key} style={{ flex: 0 }}>
 										<CardItem header>
 											<TForm type={MenuItemModel} onChange={onChange} value={menuItem} options={MenuItemModelOptions}/>
 
