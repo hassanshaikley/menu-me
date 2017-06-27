@@ -52,8 +52,7 @@ const MenuScreen = React.createClass({
 		return (
 			<Container>
 				<Content>
-					<ScrollView>
-						<Text style={{textAlign: 'center', fontSize: 20, marginBottom: 30}}>
+					<Text style={{textAlign: 'center', fontSize: 20, marginBottom: 30}}>
 							{this.props.screenProps.getTitle()}
 						</Text>
 						{
@@ -67,9 +66,9 @@ const MenuScreen = React.createClass({
 							Object.keys(categories).map((category) => {
 								// console.log('iterating through ', categories[category], category)
 								return (
-									<Card>
+									<Card key={category}>
 										<CardItem header>
-											<Text>
+											<Text style={{textAlign: 'center'}}>
 											{category}
 										</Text>
 
@@ -79,7 +78,7 @@ const MenuScreen = React.createClass({
 												{
 													categories[category].map((menuItem) => {
 														return (
-															<Card>
+															<Card key={menuItem.name}>
 																<CardItem>
 																	<Body>
 																		<Text>
@@ -102,9 +101,6 @@ const MenuScreen = React.createClass({
 							})
 						}
 
-
-
-					</ScrollView>
 				</Content>
 			</Container>
 		);
