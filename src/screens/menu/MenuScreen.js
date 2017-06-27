@@ -53,58 +53,58 @@ const MenuScreen = React.createClass({
 			<Container>
 				<Content>
 					<Text style={{textAlign: 'center', fontSize: 20, marginBottom: 30}}>
-							{this.props.screenProps.getTitle()}
+						{this.props.screenProps.getTitle()}
+					</Text>
+					{
+						menuItems.length === 0 &&
+						<Text style={{textAlign: 'center'}}>
+							Swipe Right to add an item to your menu! : )
 						</Text>
-						{
-							menuItems.length === 0 &&
-							<Text style={{textAlign: 'center'}}>
-								Swipe Right to add an item to your menu! : )
-							</Text>
-						}
+					}
 
-						{
-							Object.keys(categories).map((category) => {
-								// console.log('iterating through ', categories[category], category)
-								return (
-									<Card key={category}>
-										<CardItem header>
-											<Text style={{textAlign: 'center'}}>
+					{
+						Object.keys(categories).map((category) => {
+							// console.log('iterating through ', categories[category], category)
+							return (
+								<View key={category} style={{marginBottom: 20}}>
+										<Text style={{textAlign: 'center', textSize: 24,}}>
 											{category}
 										</Text>
+									<Body>
+										{
+											categories[category].map((menuItem, key) => {
+												return (
+													<Card key={key} style={{marginTop: 10, width: 300}}>
+														<CardItem header>
+															<Text style={{textAlign: 'center', }}>
+																{menuItem.name}
+															</Text>
+														</CardItem>
+														<CardItem>
+															<Body>
 
-										</CardItem>
-										<CardItem>
-											<Body>
-												{
-													categories[category].map((menuItem) => {
-														return (
-															<Card key={menuItem.name}>
-																<CardItem>
-																	<Body>
-																		<Text>
-																			{menuItem.name}
-																		</Text>
-																		<Text>
-																			{menuItem.description}
-																		</Text>
-																	</Body>
-																</CardItem>
-															</Card>
-														)
-													})
-												}
+																<Text>
+																	{menuItem.description}
+																</Text>
+															</Body>
+														</CardItem>
+													</Card>
+												)
+											})
+										}
 
-											</Body>
-										</CardItem>
-									</Card>
-								)
-							})
-						}
+									</Body>
+							</View>
+						)
+					})
+				}
 
-				</Content>
-			</Container>
-		);
-	},
+
+
+			</Content>
+		</Container>
+	);
+},
 });
 
 export default MenuScreen;
