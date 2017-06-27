@@ -17,7 +17,7 @@ const TForm = t.form.Form;
 const MenuItemModel = t.struct({
 	name: t.String,
 	description: t.maybe(t.String),
-	alreadyPrepared: t.Boolean,
+	// alreadyPrepared: t.Boolean,
 	category: t.String,
 });
 
@@ -74,7 +74,7 @@ const EditMenuScreen = React.createClass({
 		menuItems.unshift({
 			name: 'Things name',
 			description: 'things description',
-			alreadyPrepared: false,
+			// alreadyPrepared: false,
 			category: 'Food',
 		})
 
@@ -112,12 +112,7 @@ const EditMenuScreen = React.createClass({
 						</Button>
 					</Form>
 
-					<Card>
-						<CardItem header>
-							<Text>
-								Menu
-							</Text>
-						</CardItem>
+
 						{
 							menuItems.map((menuItem, key) => {
 								console.log(`creating menu item ${key}, using data: ${JSON.stringify(menuItem)}`)
@@ -149,7 +144,6 @@ const EditMenuScreen = React.createClass({
 							})
 						}
 
-					</Card>
 				</Content>
 			</Container>
 		);
